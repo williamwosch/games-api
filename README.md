@@ -147,5 +147,7 @@ src/main/kotlin/br/pucpr/games
 ├── repository    # Acesso ao banco (Spring Data)
 └── service       # Regras de negócio
 ```
+## Autor
 
+william wosch e matheus glowaski, disciplina de Back-end, PUCPR.
  
