@@ -148,6 +148,4 @@ src/main/kotlin/br/pucpr/games
 └── service       # Regras de negócio
 ```
 
-## Autor
-
-william wosch e matheus glowaski, disciplina de Back-end, PUCPR.
+ 
