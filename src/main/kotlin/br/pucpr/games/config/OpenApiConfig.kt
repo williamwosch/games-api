@@ -16,9 +16,12 @@ class OpenApiConfig {
         .info(Info().title("API de Gerenciamento de Jogos").version("1.0"))
         .components(
             Components().addSecuritySchemes(
-                "basicAuth",
-                SecurityScheme().type(SecurityScheme.Type.HTTP).scheme("basic")
+                "bearerAuth",
+                SecurityScheme()
+                    .type(SecurityScheme.Type.HTTP)
+                    .scheme("bearer")
+                    .bearerFormat("JWT")
             )
         )
-        .addSecurityItem(SecurityRequirement().addList("basicAuth"))
+        .addSecurityItem(SecurityRequirement().addList("bearerAuth"))
 }

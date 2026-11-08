@@ -21,13 +21,15 @@ class Usuario(
     @Column(nullable = false, unique = true)
     var email: String,
     @Column(nullable = false)
-    var senha: String?
+    var senha: String
 ) {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null
-}
 
+    @Column(nullable = false, length = 20)
+    var perfil: String = "USER"
+}
 @Entity
 class Jogo(
     @Column(nullable = false)

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.RestControllerAdvice
 import java.time.LocalDateTime
 
+class CredenciaisInvalidasException(mensagem: String) : RuntimeException(mensagem)
 class RecursoNaoEncontradoException(mensagem: String) : RuntimeException(mensagem)
 class ConflitoException(mensagem: String) : RuntimeException(mensagem)
 class AcessoNegadoException(mensagem: String) : RuntimeException(mensagem)
@@ -56,6 +57,11 @@ class GlobalExceptionHandler {
         return ResponseEntity.badRequest().body(
             ErroResponse(400, "Requisição inválida", "Existem campos inválidos", campos)
         )
+    }
+    @ExceptionHandler(CredenciaisInvalidasException::class)
+    fun credenciaisInvalidas(ex: CredenciaisInvalidasException): ResponseEntity<ErroResponse> {
+        log.warn("401 - {}", ex.message)
+        return resposta(HttpStatus.UNAUTHORIZED, ex.message)
     }
 
     private fun resposta(status: HttpStatus, mensagem: String?) =

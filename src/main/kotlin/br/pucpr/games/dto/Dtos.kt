@@ -83,3 +83,18 @@ fun Usuario.toResponse() = UsuarioResponse(id!!, nome, email)
 fun Avaliacao.toResponse() = AvaliacaoResponse(id!!, nota, comentario, dataAvaliacao, jogo.id!!, usuario.nome)
 
 fun Favorito.toResponse() = FavoritoResponse(jogo.id!!, jogo.titulo, dataFavoritado)
+
+data class LoginRequest(
+    @field:NotBlank(message = "O email é obrigatório")
+    @field:Email(message = "Email inválido")
+    val email: String,
+    @field:NotBlank(message = "A senha é obrigatória")
+    val senha: String
+)
+
+data class TokenResponse(
+    val token: String,
+    val tipo: String = "Bearer",
+    val expiraEmMinutos: Long,
+    val perfil: String
+)

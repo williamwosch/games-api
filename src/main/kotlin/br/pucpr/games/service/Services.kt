@@ -144,7 +144,8 @@ class UsuarioService(
 
     fun criar(req: UsuarioRequest): UsuarioResponse {
         if (repo.existsByEmail(req.email)) throw ConflitoException("Email '${req.email}' já cadastrado")
-        val usuario = repo.save(Usuario(req.nome.trim(), req.email.trim(), passwordEncoder.encode(req.senha)))
+        val hash: String = passwordEncoder.encode(req.senha) ?: error("Falha ao criptografar a senha")
+        val usuario = repo.save(Usuario(req.nome.trim(), req.email.trim(), hash))
         log.info("Usuário criado: id={}", usuario.id)
         return usuario.toResponse()
     }
