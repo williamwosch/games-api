@@ -4,7 +4,7 @@ Back-end REST para gerenciar **usuários, jogos, categorias, avaliações e favo
 
 ## Vídeo de demonstração
 
-Em breve: link do vídeo no YouTube.
+Em breve: [link do vídeo no YouTube.](https://www.youtube.com/watch?v=Ee53TeLzA6w)
 
 ## Autores
 
